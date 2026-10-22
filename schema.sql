@@ -1,0 +1,29 @@
+CREATE DATABASE IF NOT EXISTS taskflow_db
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_unicode_ci;
+
+USE taskflow_db;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS tasks (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT UNSIGNED NOT NULL,
+    title VARCHAR(200) NOT NULL,
+    subject VARCHAR(200) NOT NULL,
+    teacher VARCHAR(200) NULL,
+    deadline DATETIME NOT NULL,
+    status ENUM('todo', 'progress', 'done') NOT NULL DEFAULT 'todo',
+    notes TEXT NULL,
+    file_name VARCHAR(255) NULL,
+    file_path VARCHAR(500) NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT fk_tasks_user FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    INDEX idx_tasks_user_deadline (user_id, deadline)
+) ENGINE=InnoDB;
