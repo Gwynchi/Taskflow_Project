@@ -1,10 +1,10 @@
-# 📋 TaskFlow (PHP + MySQL Edition)
+# TaskFlow (PHP + MySQL Edition)
 
 **TaskFlow** is a full-stack to-do list and task management application built with PHP and MySQL. Refactored from a browser-only IndexedDB setup, this version separates the frontend and backend into modular PHP, CSS, JavaScript, and SQL files—enabling server-side authentication, file attachments, and multi-device syncing via a shared MySQL database.
 
 ---
 
-## ✨ Key Features
+##  Key Features
 
 * **User Authentication:** Secure account registration and login powered by PHP sessions, `password_hash()`, and `password_verify()`.
 * **Task Management:** Create, view, update, and delete to-do items stored persistently in MySQL.
@@ -13,7 +13,7 @@
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```text
 TaskFlow_PHP/
